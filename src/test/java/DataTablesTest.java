@@ -6,7 +6,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import java.time.Duration;
 
 public class DataTablesTest {
@@ -36,11 +35,9 @@ public class DataTablesTest {
 
     @Test
     public void checkLastName() {
-        SoftAssert softAssert = new SoftAssert();
         driver.get("https://the-internet.herokuapp.com/tables");
         String foughtValueInLastNameColumn = driver.findElement(By.xpath("//table//tr[4]//td[1] ")).getText();
         Assert.assertEquals(foughtValueInLastNameColumn, "Conway");
-        softAssert.assertAll();
     }
 
     /*
@@ -57,11 +54,9 @@ public class DataTablesTest {
 
     @Test
     public void checkFirstName() {
-        SoftAssert softAssert = new SoftAssert();
         driver.get("https://the-internet.herokuapp.com/tables");
         String thirdValueInFirstNameColumn = driver.findElement(By.xpath("//table[2]//tr[3]//td[2]")).getText();
         Assert.assertEquals(thirdValueInFirstNameColumn, "Jason");
-        softAssert.assertAll();
     }
 
     /*
@@ -78,15 +73,15 @@ public class DataTablesTest {
 
     @Test
     public void checkEmail() {
-        SoftAssert softAssert = new SoftAssert();
         driver.get("https://the-internet.herokuapp.com/tables");
         String secondValueInEmailColumn = driver.findElement(By.xpath("//table[1]//tr[2]//td[3]")).getText();
         Assert.assertEquals(secondValueInEmailColumn, "fbach@yahoo.com");
-        softAssert.assertAll();
     }
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }

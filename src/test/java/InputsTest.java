@@ -95,12 +95,14 @@ public class InputsTest {
         inputElement.click();
         inputElement.sendKeys("Have a nice day");
         String nonNumberValue = inputElement.getAttribute("value");
-        softAssert.assertEquals(nonNumberValue, ""); // этот тест проходит как успешный, хотя в поле у нас остаётся значение "e". Думала поставить null в expected, но не уверена, что это корректно
+        softAssert.assertEquals(nonNumberValue, "");
         softAssert.assertAll();
     }
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
