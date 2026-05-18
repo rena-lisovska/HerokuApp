@@ -8,6 +8,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.time.Duration;
 
+import static org.testng.Assert.assertEquals;
+
 public class DataTablesTest {
 
     WebDriver driver;
@@ -37,7 +39,7 @@ public class DataTablesTest {
     public void checkLastName() {
         driver.get("https://the-internet.herokuapp.com/tables");
         String foughtValueInLastNameColumn = driver.findElement(By.xpath("//table//tr[4]//td[1] ")).getText();
-        Assert.assertEquals(foughtValueInLastNameColumn, "Conway");
+        assertEquals(foughtValueInLastNameColumn, "Conway");
     }
 
     /*
@@ -56,7 +58,7 @@ public class DataTablesTest {
     public void checkFirstName() {
         driver.get("https://the-internet.herokuapp.com/tables");
         String thirdValueInFirstNameColumn = driver.findElement(By.xpath("//table[2]//tr[3]//td[2]")).getText();
-        Assert.assertEquals(thirdValueInFirstNameColumn, "Jason");
+        assertEquals(thirdValueInFirstNameColumn, "Jason");
     }
 
     /*
@@ -75,7 +77,7 @@ public class DataTablesTest {
     public void checkEmail() {
         driver.get("https://the-internet.herokuapp.com/tables");
         String secondValueInEmailColumn = driver.findElement(By.xpath("//table[1]//tr[2]//td[3]")).getText();
-        Assert.assertEquals(secondValueInEmailColumn, "fbach@yahoo.com");
+        assertEquals(secondValueInEmailColumn, "fbach@yahoo.com");
     }
 
     @AfterMethod
