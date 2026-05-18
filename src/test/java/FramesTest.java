@@ -11,6 +11,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.time.Duration;
 
+import static org.testng.Assert.assertEquals;
+
 public class FramesTest {
 
     WebDriver driver;
@@ -30,7 +32,7 @@ public class FramesTest {
         driver.findElement(By.linkText("iFrame")).click();
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("mce_0_ifr"));
         WebElement text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body[@id='tinymce']/p")));
-        Assert.assertEquals(text.getText(), "Your content goes here.", "The text does not match what was expected.");
+        assertEquals(text.getText(), "Your content goes here.", "The text does not match what was expected.");
     }
 
     @AfterMethod

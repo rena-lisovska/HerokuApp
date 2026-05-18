@@ -9,6 +9,8 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.util.HashMap;
 
+import static org.testng.Assert.assertTrue;
+
 
 public class FileDownloaderTest {
 
@@ -45,7 +47,7 @@ public class FileDownloaderTest {
                 }
             }
         }
-        Assert.assertTrue(found, "Downloaded file was not found.");
+        assertTrue(found, "Downloaded file was not found.");
         if (downloadedFile != null) {
             downloadedFile.delete();
         }

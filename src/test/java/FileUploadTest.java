@@ -12,6 +12,8 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
+import static org.testng.Assert.assertEquals;
+
 public class FileUploadTest {
 
     WebDriver driver;
@@ -33,7 +35,7 @@ public class FileUploadTest {
         driver.findElement(By.xpath("//input[@type='file' and @id='file-upload']")).sendKeys(filePath);
         driver.findElement(By.xpath("//input[@class='button' and @id='file-submit']")).click();
         WebElement uploadedFileName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#uploaded-files")));
-        Assert.assertEquals(uploadedFileName.getText(), expectedFileName, "The file names do not match.");
+        assertEquals(uploadedFileName.getText(), expectedFileName, "The file names do not match.");
     }
 
     @AfterMethod

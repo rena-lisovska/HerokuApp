@@ -12,6 +12,8 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import java.time.Duration;
 
+import static org.testng.Assert.assertEquals;
+
 public class DynamicControlsTest {
 
     WebDriver driver;
@@ -31,7 +33,7 @@ public class DynamicControlsTest {
         driver.findElement(By.xpath("//*[text()='Remove']")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text()=\"It's gone!\"]")));
         int numberOfElements = driver.findElements(By.cssSelector("[type='checkbox']")).size();
-        Assert.assertEquals(numberOfElements, 0, "The checkbox element is present on the page.");
+        assertEquals(numberOfElements, 0, "The checkbox element is present on the page.");
     }
 
     @Test
